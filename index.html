@@ -1,0 +1,39 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Live Log Watcher</title>
+  </head>
+  <body>
+    <h2>Live Logs:</h2>
+    <div id="logs"></div>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script>
+      const socket = io();
+      const container = document.getElementById("logs");
+
+      socket.on("init", (lines) => {
+  lines
+    .filter((log) => log.trim() !== "")
+    .forEach((log) => {
+      const p = document.createElement("p");
+      p.textContent = log; // use textContent for safety
+      container.appendChild(p);
+    });
+});
+
+
+      socket.on("update-log", (lines) => {
+  lines
+    .filter((log) => log.trim() !== "")
+    .forEach((log) => {
+      const p = document.createElement("p");
+      p.textContent = log;
+      container.appendChild(p);
+    });
+  });
+    </script>
+  </body>
+</html>
