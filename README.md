@@ -1,7 +1,7 @@
 Steps for tail -f command
 
-1) Initialize a node project npm init -y
 2) Install dependencies (express, socketio, nodemon)
+ - npm i socket.io@^4.8.1 express@^5.1.0 nodemon@^3.1.10
 3) code index.js basic setup ie import express, setup app, setup port and run server
 4) code watcher.js, researching on EventEmitter, BufferSize, FS(FileSystem module), Promises Object Oriented appproach 
 5) complete index.js with socketio 
